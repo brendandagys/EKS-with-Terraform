@@ -1,8 +1,3 @@
-variable "vpc_name" {
-  type = string
-  default = "kubernetes-vpc"
-}
-
 variable "vpc_cidr_block" {
   type = string
   default = "10.0.0.0/16"
@@ -18,12 +13,32 @@ variable "vpc_private_subnets" {
   default = ["10.0.128.0/24", "10.0.129.0/24"]
 }
 
-variable "single_nat_gateway" {
+# DATABASE SUBNETS
+variable "vpc_create_database_subnet_group" {
   type = bool
-  default = false
+  default = true
 }
 
-variable "environment" {
-  type = string
-  default = "development"
+variable "vpc_create_database_subnet_route_table" {
+  type = bool
+  default = true
 }
+
+variable "vpc_database_subnets" {
+  type = list(string)
+  default = ["10.0.164.0/24", "10.0.165.0/24"]
+}
+###
+
+
+# NAT GATEWAY
+variable "vpc_enable_nat_gateway" {
+  type = bool
+  default = true  
+}
+
+variable "vpc_single_nat_gateway" {
+  type = bool
+  default = true
+}
+##

@@ -2,6 +2,9 @@
 **/.terraform/*
 .DS_Store
 
+private-key/
+local-exec-output-files/
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
