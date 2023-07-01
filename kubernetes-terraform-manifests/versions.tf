@@ -14,9 +14,9 @@ terraform {
 
   backend "s3" {
     bucket = "terraform-remote-state-eks"
-    key = "dev/app1k8s/terraform.tfstate"
+    key = "dev/eks-irsa-demo/terraform.tfstate"
     region = "us-east-1"
 
-    dynamodb_table = "dev-app1k8s"
+    dynamodb_table = "dev-eks-irsa-demo"
   }
 }
