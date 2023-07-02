@@ -6,17 +6,26 @@ terraform {
       version = "~> 5.4.0"
     }
 
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "~> 2.21.1"
+    # kubernetes = {
+    #   source = "hashicorp/kubernetes"
+    #   version = "~> 2.21.1"
+    # }
+
+    helm = {
+      source = "hashicorp/helm"
+      version = "~> 2.10.1"
+    }
+    http = {
+      source = "hashicorp/http"
+      version = "~> 3.4.0"
     }
   }
 
   backend "s3" {
     bucket = "terraform-remote-state-eks"
-    key = "dev/eks-irsa-demo/terraform.tfstate"
+    key = "dev/ebs-storage/terraform.tfstate"
     region = "us-east-1"
 
-    dynamodb_table = "dev-eks-irsa-demo"
+    dynamodb_table = "dev-ebs-storage"
   }
 }
