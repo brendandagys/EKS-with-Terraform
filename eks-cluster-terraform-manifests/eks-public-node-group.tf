@@ -6,6 +6,7 @@ resource "aws_eks_node_group" "eks_public_node_group" {
     aws_iam_role_policy_attachment.eks-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.eks-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.eks-AmazonEC2ContainerRegistryReadOnly,
+    kubernetes_config_map_v1.aws_auth,
   ]
 
   cluster_name    = aws_eks_cluster.eks_cluster.name
@@ -13,7 +14,7 @@ resource "aws_eks_node_group" "eks_public_node_group" {
   node_role_arn   = aws_iam_role.eks_nodegroup_role.arn
   subnet_ids      = module.vpc.public_subnets
   
-  ami_type = "AL2_x86_64"  
+  ami_type = "AL2_x86_64"
   capacity_type = "SPOT"
   disk_size = 20
   instance_types = ["t3.small"]
@@ -24,12 +25,12 @@ resource "aws_eks_node_group" "eks_public_node_group" {
 
   scaling_config {
     desired_size = 1
-    min_size     = 1    
+    min_size     = 1
     max_size     = 2
   }
 
   update_config {
-    max_unavailable = 1    
+    max_unavailable = 1
   }
 
   tags = {

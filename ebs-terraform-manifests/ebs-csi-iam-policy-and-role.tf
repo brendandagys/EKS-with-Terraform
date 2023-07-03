@@ -10,7 +10,7 @@ resource "aws_iam_policy" "ebs_csi_iam_policy" {
 }
 
 output "ebs_csi_iam_policy_arn" {
-  value = aws_iam_policy.ebs_csi_iam_policy.arn 
+  value = aws_iam_policy.ebs_csi_iam_policy.arn
 }
 
 # Resource: Create IAM Role and associate the EBS IAM Policy to it

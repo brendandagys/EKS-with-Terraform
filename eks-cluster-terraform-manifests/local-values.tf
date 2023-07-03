@@ -1,5 +1,6 @@
 locals {
   owner = "Brendan"
+  environment = var.environment
   project = "eks-terraform"
 
   common_tags = {
