@@ -2,10 +2,11 @@ resource "kubernetes_cluster_role_v1" "eksreadonly_clusterrole" {
   metadata {
     name = "${local.environment}-eksreadonly-clusterrole"
   }
+
   rule {
     api_groups = [""] # These come under core APIs
-    # resources  = ["nodes", "namespaces", "pods", "events", "services"]
-    resources  = ["nodes", "namespaces", "pods", "events", "services", "configmaps", "serviceaccounts"] #Uncomment for additional Testing
+    resources  = ["nodes", "namespaces", "pods", "events", "services"]
+    # resources  = ["nodes", "namespaces", "pods", "events", "services", "configmaps", "serviceaccounts"] # Uncomment for additional Testing
     verbs      = ["get", "list"]    
   }
   rule {

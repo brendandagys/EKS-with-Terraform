@@ -24,6 +24,11 @@ locals {
       username = "eks-readonly"
       groups = ["${kubernetes_cluster_role_binding_v1.eksreadonly_clusterrolebinding.subject.0.name}"]
     },
+    {
+      rolearn  = "${aws_iam_role.eks_developer_role.arn}"
+      username = "eks-developer"
+      groups   = [ "${kubernetes_role_binding_v1.eksdeveloper_rolebinding.subject[0].name}" ]
+    },  
   ]
   configmap_users = [
     {
@@ -40,7 +45,12 @@ locals {
 }
 
 resource "kubernetes_config_map_v1" "aws_auth" {
-  depends_on = [aws_eks_cluster.eks_cluster, kubernetes_cluster_role_binding_v1.eksreadonly_clusterrolebinding]
+  depends_on = [
+    aws_eks_cluster.eks_cluster,
+    kubernetes_cluster_role_binding_v1.eksreadonly_clusterrolebinding,
+    kubernetes_cluster_role_binding_v1.eksdeveloper_clusterrolebinding,
+    kubernetes_role_binding_v1.eksdeveloper_rolebinding,
+  ]
   metadata {
     name = "aws-auth"
     namespace = "kube-system"
