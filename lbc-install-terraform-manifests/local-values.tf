@@ -1,11 +1,9 @@
+# Define Local Values in Terraform
 locals {
-  owner = "Brendan"
   environment = var.environment
-  
+  name = var.environment
   common_tags = {
-    owner = local.owner
-    environment = var.environment
+    environment = local.environment
   }
-
   eks_cluster_name = "${data.terraform_remote_state.eks.outputs.cluster_id}"  
-}
+} 

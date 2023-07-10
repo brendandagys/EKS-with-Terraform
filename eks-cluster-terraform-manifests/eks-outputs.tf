@@ -40,37 +40,37 @@ output "cluster_primary_security_group_id" {
 }
 
 # EKS Node Group Outputs - Public
-output "cluster_node_group_public_id" {
-  value = aws_eks_node_group.eks_public_node_group.id
-}
+# output "cluster_node_group_public_id" {
+#   value = aws_eks_node_group.eks_public_node_group.id
+# }
 
-output "cluster_node_group_public_arn" {
-  value = aws_eks_node_group.eks_public_node_group.arn
-}
+# output "cluster_node_group_public_arn" {
+#   value = aws_eks_node_group.eks_public_node_group.arn
+# }
 
-output "cluster_node_group_public_status" {
-  value = aws_eks_node_group.eks_public_node_group.status
-}
+# output "cluster_node_group_public_status" {
+#   value = aws_eks_node_group.eks_public_node_group.status
+# }
 
-output "cluster_node_group_public_version" {
-  description = "Public Node Group Kubernetes Version"
-  value = aws_eks_node_group.eks_public_node_group.version
-}
+# output "cluster_node_group_public_version" {
+#   description = "Public Node Group Kubernetes Version"
+#   value = aws_eks_node_group.eks_public_node_group.version
+# }
 
 # EKS Node Group Outputs - Private
-# output "cluster_node_group_private_id" {
-#   value = aws_eks_node_group.eks_private_node_group.id
-# }
+output "cluster_node_group_private_id" {
+  value = aws_eks_node_group.eks_private_node_group.id
+}
 
-# output "cluster_node_group_private_arn" {
-#   value = aws_eks_node_group.eks_private_node_group.arn
-# }
+output "cluster_node_group_private_arn" {
+  value = aws_eks_node_group.eks_private_node_group.arn
+}
 
-# output "cluster_node_group_private_status" {
-#   value = aws_eks_node_group.eks_private_node_group.status 
-# }
+output "cluster_node_group_private_status" {
+  value = aws_eks_node_group.eks_private_node_group.status 
+}
 
-# output "cluster_node_group_private_version" {
-#   description = "Private Node Group Kubernetes Version"
-#   value = aws_eks_node_group.eks_private_node_group.version
-# }
+output "cluster_node_group_private_version" {
+  description = "Private Node Group Kubernetes Version"
+  value = aws_eks_node_group.eks_private_node_group.version
+}
